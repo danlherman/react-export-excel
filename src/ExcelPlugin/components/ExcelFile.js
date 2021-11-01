@@ -81,12 +81,16 @@ class ExcelFile extends React.Component {
     const wb = {
       SheetNames: React.Children.map(
         this.props.children,
-        sheet => sheet.props.name
+        sheet => {
+          if (sheet == null) return
+          sheet.props.name
+        }
       ),
       Sheets: {}
     };
 
     React.Children.forEach(this.props.children, sheet => {
+      if (sheet == null) return
       if (
         typeof sheet.props.dataSet === "undefined" ||
         sheet.props.dataSet.length === 0
