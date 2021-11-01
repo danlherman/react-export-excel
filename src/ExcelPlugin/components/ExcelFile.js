@@ -83,7 +83,7 @@ class ExcelFile extends React.Component {
         this.props.children,
         sheet => {
           if (sheet == null) return
-          sheet.props.name
+          return sheet.props.name
         }
       ),
       Sheets: {}
