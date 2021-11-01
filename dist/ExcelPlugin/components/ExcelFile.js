@@ -86,12 +86,14 @@ var ExcelFile = function (_React$Component) {
 
       var wb = {
         SheetNames: _react2.default.Children.map(this.props.children, function (sheet) {
+          if (sheet == null) return;
           return sheet.props.name;
         }),
         Sheets: {}
       };
 
       _react2.default.Children.forEach(this.props.children, function (sheet) {
+        if (sheet == null) return;
         if (typeof sheet.props.dataSet === "undefined" || sheet.props.dataSet.length === 0) {
           wb.Sheets[sheet.props.name] = (0, _DataUtil.excelSheetFromAoA)(_this2.createSheetData(sheet));
         } else {
